@@ -14,9 +14,9 @@ import { CreateCatDto } from './dto/create-cat-dto';
 import { UpdateCatDto } from './dto/update-cat.dto';
 
 @Controller('cats')
+@UseFilters(HttpExceptionFilter)
 export class CatsController {
   @Post()
-  @UseFilters(HttpExceptionFilter)
   create(@Body() createCatDto: CreateCatDto): string {
     throw new ForbiddenException();
 
