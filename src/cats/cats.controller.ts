@@ -3,6 +3,8 @@ import {
   Controller,
   Delete,
   Get,
+  HttpException,
+  HttpStatus,
   Param,
   Post,
   Put,
@@ -19,6 +21,8 @@ export class CatsController {
 
   @Get()
   findAll(): string {
+    throw new HttpException('Forbidden', HttpStatus.FORBIDDEN);
+
     return 'This action returns all cats';
   }
 
