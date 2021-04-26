@@ -3,12 +3,11 @@ import {
   Controller,
   Delete,
   Get,
-  HttpException,
-  HttpStatus,
   Param,
   Post,
   Put,
 } from '@nestjs/common';
+import { ForbiddenException } from 'src/forbidden.exception';
 import { CreateCatDto } from './dto/create-cat-dto';
 import { UpdateCatDto } from './dto/update-cat.dto';
 
@@ -21,7 +20,7 @@ export class CatsController {
 
   @Get()
   findAll(): string {
-    throw new HttpException('Forbidden', HttpStatus.FORBIDDEN);
+    throw new ForbiddenException();
 
     return 'This action returns all cats';
   }
