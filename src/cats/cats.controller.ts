@@ -6,19 +6,27 @@ import {
   Param,
   Post,
   Put,
+  UseFilters,
 } from '@nestjs/common';
+import { ForbiddenException } from 'src/forbidden.exception';
+import { HttpExceptionFilter } from 'src/http-exception.filter';
 import { CreateCatDto } from './dto/create-cat-dto';
 import { UpdateCatDto } from './dto/update-cat.dto';
 
 @Controller('cats')
+@UseFilters(HttpExceptionFilter)
 export class CatsController {
   @Post()
   create(@Body() createCatDto: CreateCatDto): string {
+    throw new ForbiddenException();
+
     return `This action adds a new cat: # ${createCatDto.name}`;
   }
 
   @Get()
   findAll(): string {
+    throw new ForbiddenException();
+
     return 'This action returns all cats';
   }
 
