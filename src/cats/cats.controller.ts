@@ -4,6 +4,7 @@ import {
   Delete,
   Get,
   Param,
+  ParseIntPipe,
   Post,
   Put,
   UseFilters,
@@ -31,7 +32,7 @@ export class CatsController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string): string {
+  findOne(@Param('id', ParseIntPipe) id: number): string {
     return `This action returns a #${id} cat`;
   }
 
